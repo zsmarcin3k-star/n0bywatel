@@ -42,16 +42,18 @@
         </div>
     </div>
 
-    <div class="upload">
-    <p class="error">To pole jest wymagane</p>
+    <div class="upload" id="uploadBox">
 
-    <input type="file" id="photoInput" accept="image/*">
+<p class="error">To pole jest wymagane</p>
 
-    <img id="preview" style="max-width:200px; margin-top:10px;">
+<input type="file" id="photoInput" accept="image/*" style="display:none;">
 
-    <div class="upload_grid">
-        <p class="upload_text">Dodaj zdjęcie</p>
-    </div>
+<img id="preview" style="max-width:200px; display:none;">
+
+<div class="upload_grid">
+<p class="upload_text">Dodaj zdjęcie</p>
+</div>
+
 </div>
 
     <div class="input_holder">
@@ -287,17 +289,34 @@ document.getElementById("generate-dates-btn").addEventListener("click", () => {
     
 
 <script>
-document.getElementById("photoInput").addEventListener("change", function(e) {
+
+const uploadBox = document.getElementById("uploadBox");
+const input = document.getElementById("photoInput");
+const preview = document.getElementById("preview");
+const text = document.querySelector(".upload_text");
+
+uploadBox.addEventListener("click", () => {
+    input.click();
+});
+
+input.addEventListener("change", function(e) {
+
     const file = e.target.files[0];
     if (!file) return;
 
     const reader = new FileReader();
 
     reader.onload = function(event) {
-        document.getElementById("preview").src = event.target.result;
+
+        preview.src = event.target.result;
+        preview.style.display = "block";
+        text.style.display = "none";
+
     };
 
     reader.readAsDataURL(file);
+
 });
+
 </script>
 </body>
