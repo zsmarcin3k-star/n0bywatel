@@ -42,17 +42,13 @@
         </div>
     </div>
 
-    <div class="upload" id="uploadBox">
+ <div class="upload" id="uploadBox">
 
-<p class="error">To pole jest wymagane</p>
+<p id="uploadText" class="upload_text">Dodaj zdjęcie</p>
 
 <input type="file" id="photoInput" accept="image/*" style="display:none;">
 
 <img id="preview" style="max-width:200px; display:none;">
-
-<div class="upload_grid">
-<p class="upload_text">Dodaj zdjęcie</p>
-</div>
 
 </div>
 
@@ -290,10 +286,12 @@ document.getElementById("generate-dates-btn").addEventListener("click", () => {
 
 <script>
 
+<script>
+
 const uploadBox = document.getElementById("uploadBox");
 const input = document.getElementById("photoInput");
 const preview = document.getElementById("preview");
-const text = document.querySelector(".upload_text");
+const text = document.getElementById("uploadText");
 
 uploadBox.addEventListener("click", () => {
     input.click();
