@@ -292,6 +292,7 @@ const uploadBox = document.getElementById("uploadBox");
 const input = document.getElementById("photoInput");
 const preview = document.getElementById("preview");
 const text = document.getElementById("uploadText");
+const error = document.querySelector(".error");
 
 uploadBox.addEventListener("click", () => {
     input.click();
@@ -309,6 +310,10 @@ input.addEventListener("change", function(e) {
         preview.src = event.target.result;
         preview.style.display = "block";
         text.style.display = "none";
+
+        if(error){
+            error.style.display = "none";
+        }
 
     };
 
